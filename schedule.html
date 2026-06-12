@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book a Revenue Diagnostic Session | ApexOps</title>
+  <meta name="description" content="Apply for a Revenue Diagnostic Session with ApexOps — a structured 45-minute audit of your operational stack, CRM, and data infrastructure."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<main class="pt-nav">
+
+  <!-- PAGE HEADER -->
+  <header class="page-header" aria-labelledby="schedule-h1">
+    <span class="eyebrow">Client Intake</span>
+    <h1 id="schedule-h1">Book a Revenue Diagnostic Session</h1>
+    <p>A structured 45-minute session auditing your operational stack, revenue pipeline, and data infrastructure. No pitch — just analysis and a clear prioritisation of your highest-leverage improvements.</p>
+  </header>
+
+  <!-- FORM -->
+  <section class="surface" aria-labelledby="form-h2">
+    <div style="text-align:center; max-width:540px; margin:0 auto 52px;">
+      <span class="eyebrow reveal">Engagement Intake</span>
+      <h2 id="form-h2" class="reveal reveal-delay-1">Complete the Intake Form</h2>
+      <p class="reveal reveal-delay-2">The more specific you are about your current stack and bottleneck, the more targeted your diagnostic session will be.</p>
+    </div>
+
+    <div class="form-wrap reveal reveal-delay-2">
+      <form id="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="company">Corporate Name <span class="req">*</span></label>
+            <input type="text" id="company" name="company" placeholder="Acme Corporation" autocomplete="organization"/>
+            <div class="field-err" id="err-company" role="alert" aria-live="polite"></div>
+          </div>
+          <div class="form-group">
+            <label for="fullname">Your Full Name <span class="req">*</span></label>
+            <input type="text" id="fullname" name="fullname" placeholder="Jane Smith" autocomplete="name"/>
+            <div class="field-err" id="err-fullname" role="alert" aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Corporate Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="jane@company.com" autocomplete="email"/>
+            <div class="field-err" id="err-email" role="alert" aria-live="polite"></div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Direct Phone <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 555 000 0000" autocomplete="tel"/>
+            <div class="field-err" id="err-phone" role="alert" aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="stack">Primary Software Stack <span class="req">*</span></label>
+          <select id="stack" name="stack" aria-required="true">
+            <option value="" disabled selected>Select your primary CRM or ops platform</option>
+            <option value="zoho">Zoho Suite</option>
+            <option value="hubspot">HubSpot</option>
+            <option value="gohighlevel">GoHighLevel</option>
+            <option value="salesforce">Salesforce</option>
+            <option value="multiple">Multiple / Unintegrated Platforms</option>
+            <option value="none">No CRM Currently</option>
+            <option value="other">Other</option>
+          </select>
+          <div class="field-err" id="err-stack" role="alert" aria-live="polite"></div>
+        </div>
+        <div class="form-group">
+          <label for="bottleneck">Primary Operational Bottleneck <span class="req">*</span></label>
+          <textarea id="bottleneck" name="bottleneck" placeholder="Describe the main operational or data challenge you're trying to solve. Be specific — the more detail you provide, the more focused and immediately useful your diagnostic session will be." aria-describedby="bottleneck-hint"></textarea>
+          <p id="bottleneck-hint" style="font-size:12px;color:var(--muted);margin-top:6px;">Minimum 40 characters. Specific answers receive priority scheduling.</p>
+          <div class="field-err" id="err-bottleneck" role="alert" aria-live="polite"></div>
+        </div>
+        <button type="submit" class="form-submit">Apply for a Diagnostic Session</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- WHAT HAPPENS NEXT -->
+  <section aria-labelledby="next-h2">
+    <div class="section-head">
+      <span class="eyebrow reveal">After You Apply</span>
+      <h2 id="next-h2" class="reveal reveal-delay-1">What Happens Next</h2>
+      <p class="section-lead reveal reveal-delay-2">No automated email sequences. A real human review within one business day.</p>
+    </div>
+    <div class="steps" role="list">
+      <div class="step reveal" role="listitem">
+        <div class="step-num">1</div>
+        <h3>Application Review</h3>
+        <p>We read your intake and assess fit. We're selective by design — this protects your time and ensures we only engage where we can deliver measurable results.</p>
+      </div>
+      <div class="step reveal reveal-delay-1" role="listitem">
+        <div class="step-num">2</div>
+        <h3>Scheduling</h3>
+        <p>If the fit is strong, we reach out within one business day to schedule your 45-minute diagnostic call at a time that works for your team.</p>
+      </div>
+      <div class="step reveal reveal-delay-2" role="listitem">
+        <div class="step-num">3</div>
+        <h3>Diagnostic Session</h3>
+        <p>A structured conversation auditing your stack, identifying the highest-leverage improvements, and outlining a realistic scope and timeline.</p>
+      </div>
+      <div class="step reveal reveal-delay-3" role="listitem">
+        <div class="step-num">4</div>
+        <h3>Proposal</h3>
+        <p>A detailed written proposal with deliverables, timeline, and fixed-fee pricing. No ambiguity, no hourly billing, no surprises.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+  <div class="modal">
+    <div class="modal-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><polyline points="4,12 9,17 20,6"/></svg>
+    </div>
+    <h3 id="modal-title">Application Received</h3>
+    <p id="modal-desc">Your intake has been logged and sent directly to our team. We'll be in touch within one business day to schedule your diagnostic session.</p>
+    <button class="modal-close" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+
+<!-- EmailJS SDK — loads from CDN, required for email delivery -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/nav-inject.js"></script>
+<script src="js/shared.js"></script>
+</body>
+</html>
