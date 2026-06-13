@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const EMAILJS_SERVICE_ID  = 'service_5n7en5q';
       const EMAILJS_TEMPLATE_ID = 'template_jbwzdns';
 
-      if (EMAILJS_PUBLIC_KEY === 'GOEHVDmg-CmKATBx4') {
+      if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
         /* ── DEV MODE: EmailJS not yet configured — show success anyway ── */
         console.log('📧 EmailJS not yet configured. Form data:', templateParams);
         await new Promise(r => setTimeout(r, 800));
