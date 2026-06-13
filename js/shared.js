@@ -70,9 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
          with your real values from https://dashboard.emailjs.com
          Setup instructions are in the EMAILJS_SETUP.md file included in this package.
       ── */
-      const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
-      const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
-      const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+      const EMAILJS_PUBLIC_KEY  = 'GOEHVDmg-CmKATBx4';
+      const EMAILJS_SERVICE_ID  = 'service_5n7en5q';
+      const EMAILJS_TEMPLATE_ID = 'template_jbwzdns';
 
       if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
         /* ── DEV MODE: EmailJS not yet configured — show success anyway ── */
