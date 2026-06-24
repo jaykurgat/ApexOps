@@ -37,13 +37,13 @@
     <div class="form-wrap reveal reveal-delay-2">
       <!-- Mini-EmailJS contact form (theme: Minimal Light) -->
 <!-- Mini-EmailJS contact form (theme: Minimal Light) -->
-<!-- Mini-EmailJS contact form (theme: Minimal Light) -->
 <style>
   .mek-form {
     --mek-bg: #ffffff;
     --mek-text: #0B0F1A;
     --mek-muted: #5C6B85;
     --mek-border: #D8DEE9;
+    --mek-input-bg: #F5F7FB;
     --mek-accent: #00C98D;
     --mek-accent-text: #0B0F1A;
     --mek-radius: 10px;
@@ -61,6 +61,7 @@
     margin: 0 0 6px;
     font-size: 1.15rem;
     font-weight: 700;
+    color: var(--mek-text);
   }
   .mek-form p.mek-sub {
     margin: 0 0 20px;
@@ -75,31 +76,43 @@
     font-size: 12.5px;
     font-weight: 600;
     margin-bottom: 6px;
+    color: var(--mek-text);
   }
   .mek-form input,
-  .mek-form textarea {
+  .mek-form textarea,
+  .mek-form select {
     width: 100%;
     box-sizing: border-box;
     padding: 11px 13px;
     border: 1px solid var(--mek-border);
     border-radius: var(--mek-radius);
-    background: transparent;
+    background: var(--mek-input-bg);
     color: var(--mek-text);
     font-family: inherit;
     font-size: 14px;
     outline: none;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    appearance: none;
+    -webkit-appearance: none;
   }
   .mek-form input:focus,
-  .mek-form textarea:focus {
+  .mek-form textarea:focus,
+  .mek-form select:focus {
     border-color: var(--mek-accent);
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--mek-accent) 18%, transparent);
+  }
+  .mek-form select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235C6B85' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+    padding-right: 36px;
+    cursor: pointer;
   }
   .mek-form textarea {
     min-height: 110px;
     resize: vertical;
   }
-  .mek-form button {
+  .mek-form button[type="submit"] {
     width: 100%;
     padding: 12px;
     border: none;
@@ -112,19 +125,31 @@
     cursor: pointer;
     transition: opacity 0.15s ease;
   }
-  .mek-form button:hover { opacity: 0.9; }
-  .mek-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+  .mek-form button[type="submit"]:hover { opacity: 0.9; }
+  .mek-form button[type="submit"]:disabled { opacity: 0.6; cursor: not-allowed; }
   .mek-form .mek-status {
     margin-top: 12px;
     font-size: 13px;
     display: none;
+    padding: 10px 14px;
+    border-radius: var(--mek-radius);
   }
   .mek-form .mek-status.show { display: block; }
-  .mek-form .mek-status.success { color: var(--mek-accent); }
-  .mek-form .mek-status.error { color: #EF4444; }
+  .mek-form .mek-status.success {
+    color: #065F46;
+    background: #D1FAE5;
+    border: 1px solid #6EE7B7;
+  }
+  .mek-form .mek-status.error {
+    color: #991B1B;
+    background: #FEE2E2;
+    border: 1px solid #FCA5A5;
+  }
   </style>
   
   <form class="mek-form" id="mek-contact-form">
+        <h3>Apply for a Diagnostic Session</h3>
+        <p class="mek-sub">We reply within 1 business day!</p>
         <div class="mek-group">
           <label for="mek-from_name">Full Name *</label>
           <input type="text" id="mek-from_name" name="from_name" required/>
@@ -138,14 +163,24 @@
           <input type="tel" id="mek-phone" name="phone"/>
         </div>
         <div class="mek-group">
-          <label for="mek-subject">Subject</label>
-          <input type="text" id="mek-subject" name="subject"/>
+          <label for="mek-stack">Software Stack</label>
+          <select id="mek-stack" name="stack">
+            <option value="" disabled selected>Select an option…</option>
+            <option value="Zoho Suite">Zoho Suite</option>
+            <option value="HubSpot">HubSpot</option>
+            <option value="GoHighLevel">GoHighLevel</option>
+            <option value="Salesforce">Salesforce</option>
+            <option value="Multiple / Unintegrated Platforms">Multiple / Unintegrated Platforms</option>
+            <option value="No CRM Currently">No CRM Currently</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
         <div class="mek-group">
           <label for="mek-message">Message *</label>
           <textarea id="mek-message" name="message" required></textarea>
         </div>
-        <!-- Honeypot — kept hidden, bots often fill it in -->
+  
+        <!-- Honeypot — hidden from real users, bots often fill it in -->
         <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off"/>
   
         <button type="submit">Send Message</button>
@@ -154,32 +189,32 @@
   
   <script>
   (function () {
-    const ENDPOINT = "https://mini-emailjs.vercel.app/api/send/apexops-website";
-    const API_KEY  = "mek_a04b7280f0c9880cea814b081741e3469329165153ce0f8b";
+    var ENDPOINT = "https://mini-emailjs.vercel.app/api/send/apexops-website";
+    var API_KEY  = "mek_a04b7280f0c9880cea814b081741e3469329165153ce0f8b";
   
-    const form = document.getElementById('mek-contact-form');
-    const status = document.getElementById('mek-status');
-    const button = form.querySelector('button');
+    var form   = document.getElementById('mek-contact-form');
+    var status = document.getElementById('mek-status');
+    var button = form.querySelector('button[type="submit"]');
   
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
       status.className = 'mek-status';
       status.textContent = '';
   
-      const data = Object.fromEntries(new FormData(form).entries());
+      var data = Object.fromEntries(new FormData(form).entries());
       data.apiKey = API_KEY;
   
       button.disabled = true;
-      const originalText = button.textContent;
+      var originalText = button.textContent;
       button.textContent = 'Sending…';
   
       try {
-        const res = await fetch(ENDPOINT, {
+        var res = await fetch(ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
         });
-        const result = await res.json();
+        var result = await res.json();
   
         if (result.ok) {
           status.textContent = 'Thanks — your message has been sent!';
@@ -191,7 +226,7 @@
         }
       } catch (err) {
         console.error('[Mini-EmailJS] fetch error:', err);
-        status.textContent = 'Network error (' + (err.message || 'unknown') + '). Check the browser console for details.';
+        status.textContent = 'Network error (' + (err.message || 'unknown') + '). Please try again.';
         status.className = 'mek-status show error';
       } finally {
         button.disabled = false;
